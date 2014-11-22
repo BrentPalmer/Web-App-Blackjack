@@ -17,3 +17,19 @@ Dealer cards:
   <li> <%= card.to_s %> </li>
   <% end %>
 </ul>
+
+<p>
+<%= session[:username]%> has: <%= calculate_total(session[:player_cards]) %>
+
+<br>
+
+<% if @show_hit_or_stay_buttons %>
+What would you like to do? 
+<form action='/game/player/hit' method='post'>
+  <input type='submit' class='btn' value='Hit'>
+</form>
+<form action='/game/player/stay' method='post'>
+  <input type='submit' class='btn' value='Stay'>
+</form>
+</p>
+<% end %>
