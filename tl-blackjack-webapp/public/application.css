@@ -1,0 +1,32 @@
+form#hit_button {
+  float: left;
+  margin-right: 10px;
+}
+
+form#stay_button {
+  float: left;
+}
+
+img.card_image {
+ margin: 0px 5px 5px 0px;
+}
+
+
+div.well {
+  opacity: .9;
+}
+
+body {
+  background-image: url(/images/las_vegas.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center fixed;
+}
+
+h5 {
+  color: white;
+}
+
+p {
+  color: white;
+}

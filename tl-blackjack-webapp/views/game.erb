@@ -1,35 +1,59 @@
 <h1>Blackjack!</h1>
+<h4>Welcome <%= session[:username]%>.</h4>
 
-<p>Welcome <%= session[:username]%>.</p>
 
-Dealer cards:
-<ul>
-  <% session[:dealer_cards].each do |card| %>
-  <li> <%= card.to_s %> </li>
-  <% end %>
-</ul>
+<div class='well'>
+  <h4>Dealer cards:</h4>
+  <ul>
+    <% if @hide_card %>
+        <% session[:dealer_cards].select do |e|%>
+          <% e = session[:dealer_cards][0] %>
+          <%= "<img src='/images/cards/cover.jpg'" %>
+        <% end %>
+      <% end %>
 
-<br>
+      <% session[:dealer_cards].each do |card| %>
+        <%= card_image(card) %> 
+    <% end %>
+  </ul>
+</div>
 
-<%= session[:username]%>'s cards:
-<ul>
-  <% session[:player_cards].each do |card| %>
-  <li> <%= card.to_s %> </li>
-  <% end %>
-</ul>
-
-<p>
-<%= session[:username]%> has: <%= calculate_total(session[:player_cards]) %>
 
 <br>
+
+
+<div class='well'>
+  <h4><%= session[:username]%>'s cards:</h4>
+  <ul>
+    <% session[:player_cards].each do |card| %>
+      <%= card_image(card) %> 
+    <% end %>
+  </ul>
+</div>
+
+
 
 <% if @show_hit_or_stay_buttons %>
-What would you like to do? 
-<form action='/game/player/hit' method='post'>
-  <input type='submit' class='btn' value='Hit'>
-</form>
-<form action='/game/player/stay' method='post'>
-  <input type='submit' class='btn' value='Stay'>
-</form>
-</p>
+  <h5><%= session[:username]%> has: <%= calculate_total(session[:player_cards]) %>
+  </h5>
+  <p>
+    What would <%= session[:username]%> like to do? 
+      <form id="hit_button" action='/game/player/hit' method='post'>
+        <input type='submit' class='btn btn-success' value='Hit'>
+      </form>
+      <form id="stay_button" action='/game/player/stay' method='post'>
+        <input type='submit' class='btn btn-warning' value='Stay'>
+      </form>
+  </p>
+  <% end %>
+
+  <% if @show_dealer_hit_button %>
+    <p>
+      <h5>Dealer has: <%= calculate_total(session[:dealer_cards]) %></h5>
+      <form action='/game/dealer/hit' method='post'>
+        <input type='submit' class='btn btn-info' value="Click to see dealer's next card">
+      </form>
+    </p>
 <% end %>
+
+

@@ -5,13 +5,12 @@
     <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/application.css">
   </head>
-  <body style="padding-top: 50px;">
-
+  <body style="padding-top: 50px;">   
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
             <ul class="nav">
-              <li><a href="/">Nav Item</a></li>
+              <li><a href="/set_name">New Game</a></li>
             </ul>
         </div>
       </div>
@@ -23,6 +22,9 @@
     <% end %>
     <%if @success %>
       <div class="alert alert-success"><%=@success%></div>
+    <% end %>
+    <%if @info %>
+      <div class="alert alert-info"><%=@info%></div>
     <% end %>
       <%= yield %>
   </div>
