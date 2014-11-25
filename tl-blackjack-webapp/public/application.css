@@ -20,6 +20,10 @@ div.well {
   opacity: .9;
 }
 
+img#card_img {
+  border: 3px solid black;
+}
+
 body {
   background-image: url(/images/Las_Vegas_copy.jpg);
   background-repeat: no-repeat;

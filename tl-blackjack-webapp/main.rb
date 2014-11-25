@@ -2,7 +2,11 @@ require 'rubygems'
 require 'sinatra'
 require 'pry'
 
-set :sessions, true
+#set :sessions, true
+
+use Rack::Session::Cookie, :key => 'rack.session',
+                           :path => '/',
+                           :secret => 'random'
 
 helpers do
 
@@ -50,16 +54,16 @@ helpers do
   end
 
   def win_or_lose(player_total, dealer_total)
-
     if player_total > dealer_total
-    @success = "Congradulations, #{session[:username]} wins!"
-  elsif player_total < dealer_total
-    @error = "#{session[:username]} lost! Dealer has: #{dealer_total}, dealer wins!" 
-  else
-    @success = "It's a tie!"
+      @success = "Congradulations, #{session[:username]} wins!"
+    elsif player_total < dealer_total
+      @error = "#{session[:username]} lost! Dealer has: #{dealer_total}, dealer wins!" 
+    else
+      @success = "It's a tie!"
+    end
   end
 
-  end
+
 end
 
 
@@ -87,6 +91,13 @@ post '/set_name' do
   if params[:username].empty?
     @error = "Name is required"
     halt erb(:set_name)
+  elsif params[:username].split.each do |value|
+    if value.to_i != 0
+      @error = "Please enter only alphabetical letters"
+      halt erb(:set_name)
+    end
+  end
+    
   end
   session[:username] = params[:username]
   redirect '/game'
