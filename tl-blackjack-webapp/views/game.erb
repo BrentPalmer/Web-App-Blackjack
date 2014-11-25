@@ -3,17 +3,17 @@
 
 
 <div class='well'>
-  <h4>Dealer cards:</h4>
+  <h4>Dealer's cards:</h4>
   <ul>
     <% if @hide_card %>
         <% session[:dealer_cards].select do |e|%>
           <% e = session[:dealer_cards][0] %>
-          <%= "<img src='/images/cards/cover.jpg'" %>
+          <img style="border:3px solid black"<%= "<img src='/images/cards/cover.jpg'" %>
         <% end %>
       <% end %>
 
       <% session[:dealer_cards].each do |card| %>
-        <%= card_image(card) %> 
+         <img style="border:3px solid black"<%= card_image(card) %>  
     <% end %>
   </ul>
 </div>
@@ -26,7 +26,7 @@
   <h4><%= session[:username]%>'s cards:</h4>
   <ul>
     <% session[:player_cards].each do |card| %>
-      <%= card_image(card) %> 
+      <img style="border:3px solid black"<%= card_image(card) %>
     <% end %>
   </ul>
 </div>
@@ -50,7 +50,7 @@
   <% if @show_dealer_hit_button %>
     <p>
       <h5>Dealer has: <%= calculate_total(session[:dealer_cards]) %></h5>
-      <form action='/game/dealer/hit' method='post'>
+      <form id="dealer_button" action='/game/dealer/hit' method='post'>
         <input type='submit' class='btn btn-info' value="Click to see dealer's next card">
       </form>
     </p>

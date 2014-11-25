@@ -1,10 +1,14 @@
 form#hit_button {
-  float: left;
-  margin-right: 10px;
+  float: right;
+  margin-left: 10px;
 }
 
 form#stay_button {
-  float: left;
+  float: right;
+}
+
+form#dealer_button {
+  float: right;
 }
 
 img.card_image {
@@ -17,7 +21,7 @@ div.well {
 }
 
 body {
-  background-image: url(/images/las_vegas.jpg);
+  background-image: url(/images/Las_Vegas_copy.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center fixed;
@@ -25,8 +29,11 @@ body {
 
 h5 {
   color: white;
+  text-align: right;
 }
 
 p {
   color: white;
+  text-align: right;
 }
+
