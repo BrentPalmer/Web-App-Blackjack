@@ -1,5 +1,5 @@
-<h2>Please enter bet amount.</h2>
-<h5><%= "#{session[:username]}" %> has <%= "$#{session[:player_total_money]}" %> to bet.</h5>
+<h2>Enter bet amount.</h2>
+<h4><%= "#{session[:username]}" %> has <%= "$#{session[:player_total_money]}" %> to bet.</h4>
 
 <form action='bet' method='post'>
   <input type='text' placeholder='ex. 100' name='bet_amount'/>

@@ -4,6 +4,8 @@
     <title>Brent's Blackjack Game</title>
     <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/application.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="/application.js"></script>
   </head>
   <body style="padding-top: 50px;">   
     <div class="navbar navbar-fixed-top">
@@ -22,9 +24,6 @@
     <% end %>
     <%if @success %>
       <div class="alert alert-success"><%=@success%></div>
-    <% end %>
-    <%if @info %>
-      <div class="alert alert-info"><%=@info%></div>
     <% end %>
       <%= yield %>
   </div>
