@@ -1,0 +1,84 @@
+<div id="game">
+  <%if @loser %>
+    <div class="alert alert-error"><%=@loser%></div>
+  <% end %>
+  <%if @winner %>
+    <div class="alert alert-success"><%=@winner%></div>
+  <% end %>
+
+  <div id='info'>
+    <h1>Welcome to Blackjack!</h1>
+    <h4>Welcome <%= session[:username]%>.</h4>
+
+
+    <h6>You have a total of: <%= "$#{session[:player_total_money]}" %></h6>
+    <h6>You have bet: <%= " $#{session[:bet_amount]}" %></h6>
+  </div>
+
+  <div id='buttons'>
+    <% if @show_hit_or_stay_buttons %>
+      <h5><%= session[:username]%> has: <%= calculate_total(session[:player_cards]) %>
+      </h5>
+      <p>
+          <form id="hit_button" action='/game/player/hit' method='post'>
+            <input type='submit' class='btn btn-success' value='Hit'>
+          </form>
+          <form id="stay_button" action='/game/player/stay' method='post'>
+            <input type='submit' class='btn btn-warning' value='Stay'>
+          </form>
+      </p>
+      <% end %>
+
+      <% if @show_dealer_hit_button %>
+        <p>
+          <h5>Dealer has: <%= calculate_total(session[:dealer_cards]) %></h5>
+          <form id="dealer_button" action='/game/dealer/hit' method='post'>
+            <input type='submit' class='btn btn-info' value="Click to see dealer's next card">
+          </form>
+        </p>
+    <% end %>
+
+    <% if @play_again %>
+      <p>
+        <strong>Play again?</strong>
+        <a href="/bet" class="btn btn-primary">Yes</a>
+        <a href="/game_over" class="btn"> No</a>
+      </p>
+    <% end %>
+  </div>
+
+  <br>
+  <br>
+
+  <div class='well'>
+    <h4><%= session[:username]%>'s cards:</h4>
+    <ul>
+      <% session[:player_cards].each do |card| %>
+        <img style="border:3px solid black"<%= card_image(card) %>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class='well'>
+    <h4>Dealer's cards:</h4>
+    <ul>
+      <% if @hide_card %>
+          <% session[:dealer_cards].select do |e|%>
+            <% e = session[:dealer_cards][0] %>
+            <img style="border:3px solid black"<%= "<img src='/images/cards/cover.jpg'" %>
+          <% end %>
+        <% end %>
+
+        <% session[:dealer_cards].each do |card| %>
+           <img style="border:3px solid black"<%= card_image(card) %>  
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+
+
+
+
+
+

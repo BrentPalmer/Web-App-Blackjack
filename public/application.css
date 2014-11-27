@@ -1,0 +1,56 @@
+form#hit_button {
+  float: left;
+  margin-right: 10px;
+}
+
+form#stay_button {
+  float: left;
+}
+
+form#dealer_button {
+  float: left;
+}
+
+img.card_image {
+ margin: 0px 5px 5px 0px;
+}
+
+div#info {
+  float: left;
+  max-width: 470px;
+}
+
+div#buttons{
+  max-width: 470px;
+  max-height: 150px;
+  margin-top: 35px;
+  float:right;
+}
+
+div.well {
+  clear: both;
+  opacity: .9;
+  background-color: #339900;
+}
+
+img#card_img {
+  border: 3px solid black;
+}
+
+body {
+  background-image: url(/images/Las_Vegas_copy.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center fixed;
+}
+
+h5 {
+  color: white;
+  text-align: left;
+}
+
+p {
+  color: white;
+  text-align: left;
+}
+
