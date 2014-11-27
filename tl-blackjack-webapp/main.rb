@@ -2,7 +2,6 @@ require 'rubygems'
 require 'sinatra'
 require 'pry'
 
-#set :sessions, true
 
 use Rack::Session::Cookie, :key => 'rack.session',
                            :path => '/',
@@ -28,12 +27,12 @@ helpers do
       end
     end
 
-  arr.select{|e| e == "A"}.count.times do
-    if total > BLACKJACK_AMOUNT
-      total -= 10
+    arr.select{|e| e == "A"}.count.times do
+      if total > BLACKJACK_AMOUNT
+        total -= 10
+      end
     end
-  end
-  total
+    total
   end
 
   def card_image(card)
@@ -117,13 +116,13 @@ post '/set_name' do
     @error = "Name is required"
     halt erb(:set_name)
   elsif params[:username].split.each do |value|
-    if value.to_i != 0
-      @error = "Please enter only alphabetical letters"
-      halt erb(:set_name)
-    end
+      if value.to_i != 0
+        @error = "Please enter only alphabetical letters"
+        halt erb(:set_name)
+      end
+    end 
   end
-    
-  end
+
   session[:username] = params[:username]
   session[:player_total_money] = STARTING_MONEY
   redirect '/bet'
@@ -224,6 +223,7 @@ post '/game/dealer/hit' do
   end
   erb :game
 end
+
 
 get '/game/compare' do
   player_total = calculate_total(session[:player_cards])
