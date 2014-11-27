@@ -58,7 +58,7 @@ helpers do
 
   def win_or_lose(player_total, dealer_total)
     if player_total > dealer_total
-      winner!("Congradulations!")
+      winner!("Congratulations!")
     elsif player_total < dealer_total
       loser!("Dealer wins with #{dealer_total}!")
     else
